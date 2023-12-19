@@ -10,6 +10,7 @@ using UnityEngine.AI;
  * who reaches to base4 first that team earn 1 point, either ball(red team) or striker(blue team)
  * there will 9 turns in the game, who reaches to score 5 first, going to win the game
  * show the results on UI
+ * Add environment
  */
 
 public class Ball : MonoBehaviour
