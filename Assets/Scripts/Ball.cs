@@ -18,6 +18,7 @@ public class Ball : MonoBehaviour
     public Transform strikerPoint, baseGuy1, baseGuy2, baseGuy3, baseGuy4;
     bool isThrowed = false, catcher = false;
     public GameObject ballCatcher;
+    public GameScore gameScore;
 
     void FirstThrow()
     {
@@ -30,7 +31,14 @@ public class Ball : MonoBehaviour
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().AddForce(new Vector3(0,0.35f,0.8f) * 2000);
-        Invoke(nameof(BallCatcher), 1);
+        Invoke(nameof(BallCatcher), 1);        
+        int x = PlayerPrefs.GetInt("Score",0);//5 -> x
+        x++;//x++ x -> 6
+        PlayerPrefs.SetInt("BlueScore", x);
+        PlayerPrefs.SetInt("RedScore", x);// x->6, Score->6
+        gameScore.UpdateTheText();
+        PlayerPrefs.SetString("SomeText", "text content");
+        PlayerPrefs.SetFloat("DecimalNumber", 0.5f);
     }
 
     void BallCatcher()
